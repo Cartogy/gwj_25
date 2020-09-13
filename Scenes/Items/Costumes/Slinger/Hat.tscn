@@ -1,0 +1,13 @@
+[gd_scene format=2]
+
+[node name="CSGBox" type="CSGBox"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002334, 0.00174302, 0.00029093 )
+width = 0.403221
+height = 0.038885
+depth = 0.339908
+
+[node name="CSGBox" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0354084, 0 )
+width = 0.171755
+height = 0.0312505
+depth = 0.195297

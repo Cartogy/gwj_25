@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/PlayerController/controller.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
+
+[node name="Controller" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+
+[node name="Camera" type="Camera" parent="Player"]
+transform = Transform( -1, 0, -3.25841e-07, -1.83037e-07, 0.827316, 0.561737, 2.69574e-07, 0.561737, -0.827316, 0.0295572, 1.63051, -1.24575 )

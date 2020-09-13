@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Scenes/Items/Costumes/item_costume.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Items/Costumes/Slinger/Hat.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Items/Item.tscn" type="PackedScene" id=3]
+
+[node name="Item" instance=ExtResource( 3 )]
+script = ExtResource( 1 )
+item_id = "slinger"
+
+[node name="CSGBox" parent="." index="2" instance=ExtResource( 2 )]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Autoload/item_dictionary.gd" type="Script" id=1]
+[ext_resource path="res://Resources/Costumes/gunslinger_resource.tres" type="Resource" id=2]
+[ext_resource path="res://Resources/Costumes/samurai_resource.tres" type="Resource" id=3]
+[ext_resource path="res://Resources/ConsumableItems/potion.tres" type="Resource" id=4]
+
+[node name="ItemDictionary" type="Node"]
+script = ExtResource( 1 )
+costume_items = {
+"samurai": ExtResource( 3 ),
+"slinger": ExtResource( 2 )
+}
+consumable_items = {
+"potion": ExtResource( 4 )
+}

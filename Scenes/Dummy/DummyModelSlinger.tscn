@@ -1,0 +1,120 @@
+[gd_scene format=2]
+
+[node name="Model" type="Spatial"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0220814 )
+
+[node name="Body" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501011, 0 )
+width = 0.221605
+height = 0.279653
+depth = 0.0804732
+
+[node name="LeftArm" type="CSGSphere" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132308, 0.113791, -0.000346184 )
+radius = 0.018859
+
+[node name="ShoulderArm" type="CSGBox" parent="Body/LeftArm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00268877, -0.0739379, 0 )
+width = 0.032341
+height = 0.110191
+depth = 0.0356195
+
+[node name="Forearm" type="CSGBox" parent="Body/LeftArm/ShoulderArm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110062, 0 )
+width = 0.0277
+height = 0.119418
+depth = 0.0356195
+
+[node name="Hand" type="CSGBox" parent="Body/LeftArm/ShoulderArm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.186265, 0 )
+width = 0.0106554
+height = 0.0406605
+depth = 0.0517372
+
+[node name="RightArm" type="CSGSphere" parent="Body"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.136658, 0.111828, 0 )
+radius = 0.018859
+
+[node name="ShoulderArm" type="CSGBox" parent="Body/RightArm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00268877, -0.0739379, 0 )
+width = 0.032341
+height = 0.110191
+depth = 0.0356195
+
+[node name="Forearm" type="CSGBox" parent="Body/RightArm/ShoulderArm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110062, 0 )
+width = 0.0277
+height = 0.119418
+depth = 0.0356195
+
+[node name="Hand" type="CSGBox" parent="Body/RightArm/ShoulderArm"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.186265, 0 )
+width = 0.0106554
+height = 0.0406605
+depth = 0.0517372
+
+[node name="Hip" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.323722, 0 )
+width = 0.183782
+height = 0.0845149
+depth = 0.0804732
+
+[node name="RightThigh" type="CSGBox" parent="Hip"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0583357, -0.106079, 0 )
+width = 0.0506106
+height = 0.156487
+depth = 0.0524418
+
+[node name="Shin" type="CSGBox" parent="Hip/RightThigh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.128578, 0 )
+width = 0.0506106
+height = 0.107197
+depth = 0.044764
+
+[node name="Foot" type="CSGBox" parent="Hip/RightThigh/Shin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0689929, 0.0255676 )
+width = 0.0506106
+height = 0.0382045
+depth = 0.108139
+
+[node name="LeftThigh" type="CSGBox" parent="Hip"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0559084, -0.106079, 0 )
+width = 0.0506106
+height = 0.156487
+depth = 0.0524418
+
+[node name="Shin" type="CSGBox" parent="Hip/LeftThigh"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.128578, 0 )
+width = 0.0506106
+height = 0.107197
+depth = 0.044764
+
+[node name="Foot" type="CSGBox" parent="Hip/LeftThigh/Shin"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0689929, 0.0255676 )
+width = 0.0506106
+height = 0.0382045
+depth = 0.108139
+
+[node name="Neck" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.675518, 0 )
+width = 0.0523465
+height = 0.0663997
+depth = 0.0475523
+
+[node name="Head" type="CSGSphere" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80695, 0 )
+radius = 0.116403
+
+[node name="Hat" type="Spatial" parent="Head"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.110199, 0 )
+
+[node name="Base" type="CSGBox" parent="Head/Hat"]
+width = 0.319098
+height = 0.0244253
+depth = 0.241393
+
+[node name="Top" type="CSGBox" parent="Head/Hat/Base"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0203949, 0 )
+width = 0.177233
+height = 0.0244253
+depth = 0.150895
