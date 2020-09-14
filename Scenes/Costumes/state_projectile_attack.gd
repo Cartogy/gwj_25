@@ -1,5 +1,6 @@
-extends "../../state_projectile_attack.gd"
+extends "../../../Scripts/StateMachine/state.gd"
 
+var direction
 
 func _ready():
 	pass # Replace with function body.
@@ -15,5 +16,3 @@ func update(delta):
 	
 func input_handler():
 	pass
-	
-

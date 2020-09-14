@@ -34,10 +34,20 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Resources/Costumes/costume_resource.gd"
 }, {
+"base": "",
+"class": "MeleeCostume",
+"language": "GDScript",
+"path": "res://Scenes/Costumes/melee_costume.gd"
+}, {
 "base": "Spatial",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Scenes/Player/player.gd"
+}, {
+"base": "",
+"class": "ProjectileCostume",
+"language": "GDScript",
+"path": "res://Scenes/Costumes/projectile_costume.gd"
 }, {
 "base": "Node",
 "class": "RestorerItem",
@@ -50,7 +60,9 @@ _global_script_class_icons={
 "Costume": "",
 "CostumeItem": "",
 "CostumeResource": "",
+"MeleeCostume": "",
 "Player": "",
+"ProjectileCostume": "",
 "RestorerItem": ""
 }
 

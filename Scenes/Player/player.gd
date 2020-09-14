@@ -7,8 +7,8 @@ export (int) var max_health
 func _ready():
 	$Stats/CurrentStats.health = get_max_health()
 
-func attack():
-	pass
+func attack(direction, delta, angular_acceleration):
+	$CostumeInterface.attack_towards(direction)
 
 
 # -- Duck-tape methods for Targetable entities --

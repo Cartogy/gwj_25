@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Damagers/DamagerContainer/damager_container.gd" type="Script" id=1]
+
+[node name="DamagerContainer" type="Spatial"]
+script = ExtResource( 1 )

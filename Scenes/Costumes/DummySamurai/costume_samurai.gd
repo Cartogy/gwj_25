@@ -1,4 +1,4 @@
-extends "../costume.gd"
+extends "../melee_costume.gd"
 
 
 func _ready():

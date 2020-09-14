@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Classes/stats_manager.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Mesh/MeshWrapper.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Mesh/CostumeInterface.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player/player.gd" type="Script" id=3]
 [ext_resource path="res://Scripts/Classes/stats.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/ItemListener/item_listener.gd" type="Script" id=6]

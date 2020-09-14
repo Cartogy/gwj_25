@@ -21,7 +21,8 @@ func _physics_process(delta):
 	else:
 		speed = 0
 	
-	$Player/CostumeInterface.rotation.y = lerp_angle($Player/CostumeInterface.rotation.y, atan2(-velocity.x, -velocity.z), delta * angular_acceleration)
+	#$Player/CostumeInterface.rotation.y = lerp_angle($Player/CostumeInterface.rotation.y, atan2(-velocity.x, -velocity.z), delta * angular_acceleration)
+	$Player/CostumeInterface.set_direction(velocity)
 	
 	$Player.move_and_slide(-velocity * speed, Vector3.UP)
 	

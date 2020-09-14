@@ -8,8 +8,5 @@ func _ready():
 func prepare_attack():
 	pass
 	
-func attack():
-	pass
-	
 func to_idle():
 	pass
