@@ -1,0 +1,21 @@
+[gd_scene format=2]
+
+[node name="Katana" type="Spatial"]
+
+[node name="Sword" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.124124 )
+width = 0.021385
+height = 0.00848473
+depth = 0.238818
+
+[node name="Hilt" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0271718 )
+width = 0.0143608
+height = 0.0123548
+depth = 0.0388386
+
+[node name="Hilt2" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.29697e-05 )
+width = 0.048558
+height = 0.0151196
+depth = 0.0159418

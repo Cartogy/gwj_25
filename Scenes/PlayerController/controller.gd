@@ -18,6 +18,7 @@ func _physics_process(delta):
 			velocity = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"),
 			0,
 			Input.get_action_strength("backward") - Input.get_action_strength("forward"))
+			velocity = convert_coordinates($Player/Camera.rotation.y, velocity)
 	else:
 		speed = 0
 	
@@ -39,3 +40,28 @@ func apply_item():
 	
 func near_item() -> bool:
 	return $Player/ItemListener.near_item
+
+func convert_coordinates(cam_angle, dir: Vector3):
+	
+	# Percentage to full rotating
+	var x_amount = -sin(cam_angle)    # Go along the Up axis
+	var z_amount = cos(cam_angle)     # Go along the Side Axis
+	# Values always going to be between -1, 1
+	var x = x_amount * dir.z
+	var z = z_amount * dir.x
+	
+	x = to_unit(x)
+	z = to_unit(z)
+	
+	# Idea is to swap the direction based on the angle of the camera
+	var velocity = Vector3(x, 0, z)
+	print(velocity)
+	return velocity.normalized()
+
+func to_unit(x):
+	if x == 0:
+		return 0
+	elif x < 0:
+		return -1
+	else:
+		return 1
