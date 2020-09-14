@@ -1,5 +1,5 @@
 extends Resource
 
-class_name Consumable
+class_name ConsumableResource
 
 export (int) var health

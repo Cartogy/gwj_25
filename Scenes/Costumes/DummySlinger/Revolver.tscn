@@ -1,0 +1,20 @@
+[gd_scene format=2]
+
+[node name="Revolver" type="Spatial"]
+transform = Transform( -4.88762e-07, 0, -3, 0, 3, 0, 3, 0, -4.88762e-07, 0, 0, 0 )
+
+[node name="Barrel" type="CSGBox" parent="."]
+width = 0.0424354
+height = 0.0159266
+depth = 0.0142145
+
+[node name="Load" type="CSGCylinder" parent="Barrel"]
+transform = Transform( -1.62921e-07, 1, -1.62921e-07, 0, -1.62921e-07, -1, -1, -1.62921e-07, 2.65431e-14, -0.00367455, 0, 0 )
+radius = 0.00958111
+height = 0.015265
+
+[node name="Handle" type="CSGBox" parent="Barrel"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0110095, -0.0146455, 0 )
+width = 0.0118538
+height = 0.0159266
+depth = 0.00722595

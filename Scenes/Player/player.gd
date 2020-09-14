@@ -34,9 +34,9 @@ func apply_costume():
 	change_costume(costume_data.model)
 	
 func change_costume(model):
-	$Mesh.remove_child($Mesh/Model)
+	$CostumeInterface.remove_child($CostumeInterface/Model)
 	var new_model = load(model)
-	$Mesh.add_child(new_model.instance())
+	$CostumeInterface.add_child(new_model.instance())
 
 
 # Item Listener functions

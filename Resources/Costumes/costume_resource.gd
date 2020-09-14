@@ -1,6 +1,6 @@
 extends Resource
 
-class_name Costume
+class_name CostumeResource
 
 export (int) var health
 export (String, FILE, "*.tscn") var model

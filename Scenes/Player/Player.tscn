@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scripts/Classes/stats_manager.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Mesh/MeshWrapper.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Player/player.gd" type="Script" id=3]
-[ext_resource path="res://Scripts/costume.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/Classes/stats.gd" type="Script" id=5]
 [ext_resource path="res://Scenes/ItemListener/item_listener.gd" type="Script" id=6]
 
@@ -19,10 +18,7 @@ max_health = 10
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 0.431222, 0 )
 shape = SubResource( 1 )
 
-[node name="Mesh" parent="." instance=ExtResource( 2 )]
-
-[node name="Costume" type="Node" parent="."]
-script = ExtResource( 4 )
+[node name="CostumeInterface" parent="." instance=ExtResource( 2 )]
 
 [node name="Stats" type="Node" parent="."]
 script = ExtResource( 1 )

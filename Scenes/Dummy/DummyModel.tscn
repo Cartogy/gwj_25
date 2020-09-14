@@ -1,7 +1,11 @@
-[gd_scene format=2]
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Costumes/costume.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Costumes/AttackStateMachineCostume.tscn" type="PackedScene" id=2]
 
 [node name="Model" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0220814 )
+script = ExtResource( 1 )
 
 [node name="Body" type="CSGBox" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.501011, 0 )
@@ -104,3 +108,5 @@ depth = 0.0475523
 [node name="Head" type="CSGSphere" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80695, 0 )
 radius = 0.116403
+
+[node name="StateMachine" parent="." instance=ExtResource( 2 )]

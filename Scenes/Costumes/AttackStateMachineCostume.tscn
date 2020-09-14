@@ -1,0 +1,32 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Scripts/StateMachine/state_machine.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Costumes/DummySlinger/States/state_slinger_reset.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Costumes/DummySlinger/States/state_slinger_inter.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Costumes/DummySlinger/States/state_slinger_prepare.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Costumes/DummySlinger/States/state_slinger_idle.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Costumes/DummySlinger/States/state_slinger_attack.gd" type="Script" id=6]
+
+[node name="StateMachine" type="Node"]
+script = ExtResource( 1 )
+START_STATE = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="."]
+script = ExtResource( 5 )
+NAME = "Idle"
+
+[node name="Prepare" type="Node" parent="."]
+script = ExtResource( 4 )
+NAME = "Prepare"
+
+[node name="Attack" type="Node" parent="."]
+script = ExtResource( 6 )
+NAME = "Attack"
+
+[node name="Intermediary" type="Node" parent="."]
+script = ExtResource( 3 )
+NAME = "Intermediary"
+
+[node name="Reset" type="Node" parent="."]
+script = ExtResource( 2 )
+NAME = "Reset"
