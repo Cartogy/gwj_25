@@ -1,0 +1,34 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Damagers/Katana/damager_katana.gd" type="Script" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 0.0106539, 0.00486408, 0.119047 )
+
+[node name="Katana" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="Sword" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.124124 )
+width = 0.021385
+height = 0.00848473
+depth = 0.238818
+
+[node name="Area" type="Area" parent="Sword"]
+
+[node name="CollisionShape" type="CollisionShape" parent="Sword/Area"]
+shape = SubResource( 1 )
+
+[node name="Hilt" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0271718 )
+width = 0.0143608
+height = 0.0123548
+depth = 0.0388386
+
+[node name="Hilt2" type="CSGBox" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.29697e-05 )
+width = 0.048558
+height = 0.0151196
+depth = 0.0159418
+[connection signal="body_entered" from="Sword/Area" to="." method="_on_Area_body_entered"]
+[connection signal="body_exited" from="Sword/Area" to="." method="_on_Area_body_exited"]

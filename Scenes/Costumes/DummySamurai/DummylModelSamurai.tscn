@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Scenes/Costumes/DummySamurai/costume_samurai.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Costumes/AttackStateMachineCostume.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Damagers/DamagerContainer/DamagerContainer.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Damagers/Katana/DamagerKatana.tscn" type="PackedScene" id=4]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Node
@@ -162,8 +164,12 @@ depth = 0.0475523
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80695, 0 )
 radius = 0.116403
 
+[node name="DamagerContainer" parent="." instance=ExtResource( 3 )]
+transform = Transform( -6.7484e-08, -1, 2.30405e-07, -0.707107, -1.15202e-07, -0.707107, 0.707107, -2.10639e-07, -0.707107, 0.107208, 0.321536, 5.58794e-09 )
+
+[node name="Katana" parent="DamagerContainer" instance=ExtResource( 4 )]
+
 [node name="StateMachine" parent="." instance=ExtResource( 2 )]
 script = SubResource( 1 )
-START_STATE = NodePath("")
 
 [editable path="StateMachine"]

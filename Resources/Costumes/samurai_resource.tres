@@ -5,4 +5,4 @@
 [resource]
 script = ExtResource( 1 )
 health = 10
-model = "res://Scenes/Dummy/DummylModelSamurai.tscn"
+model = "res://Scenes/Costumes/DummySamurai/DummylModelSamurai.tscn"

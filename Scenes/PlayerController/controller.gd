@@ -55,9 +55,9 @@ func convert_coordinates(cam_angle, dir: Vector3):
 	
 	# Idea is to swap the direction based on the angle of the camera
 	var velocity = Vector3(x, 0, z)
-	print(velocity)
 	return velocity.normalized()
 
+# Maintain a value of either 0, -1, 1
 func to_unit(x):
 	if x == 0:
 		return 0
