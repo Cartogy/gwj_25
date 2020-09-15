@@ -8,8 +8,10 @@ func _ready():
 	$Stats/CurrentStats.health = get_max_health()
 
 func attack(direction):
-	$CostumeInterface.attack_towards(direction)
+	$CostumeInterface.attack(direction)
 
+func rotate_towards(direction):
+	$CostumeInterface.set_direction(direction)
 
 # -- Duck-tape methods for Targetable entities --
 func hit():
@@ -51,13 +53,8 @@ func clear_item():
 	
 # Animation State
 func stop_moving():
-	if $CostumeInterface/Model.moving:
-		$CostumeInterface/Model/StateMachine.change_state("Idle")
+	$CostumeInterface.to_idle()
 	
 func move():
-	if $CostumeInterface/Model.moving == false:
-		$CostumeInterface/Model.moving = true
+	$CostumeInterface.move()
 		
-# From attack
-func to_idle():
-	$CostumeInterface/Model/StateMachine.change_state("Idle")

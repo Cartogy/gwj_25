@@ -16,11 +16,10 @@ func enter():
 	
 	
 func exit():
-	player.to_idle()
+	pass
 	
 func update(delta):
 	if $Timer.is_stopped():
-		player.to_idle()
 		return "Idle"
 	
 func input_handler(event):
@@ -31,5 +30,5 @@ func input_handler(event):
 func attack():
 	$Timer.start()	# reset
 	player.attack(controller.attack_direction)
-	player.get_node("CostumeInterface").set_direction(controller.attack_direction)
+	player.rotate_towards(controller.attack_direction)
 	

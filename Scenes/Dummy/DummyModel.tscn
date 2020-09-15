@@ -1425,7 +1425,7 @@ nodes/Legs/position = Vector2( 60, -240 )
 nodes/Prepare/node = SubResource( 22 )
 nodes/Prepare/position = Vector2( 80, 60 )
 nodes/output/position = Vector2( 800, -60 )
-node_connections = [ "output", 0, "Attack Transition", "Arms", 0, "Animation 3", "Arms", 1, "Animation", "Attack To Inter", 0, "Animation 6", "Attack To Inter", 1, "Animation 7", "Arms n Legs", 0, "Legs", "Arms n Legs", 1, "Prepare", "Prepare", 0, "Arms", "Prepare", 1, "Animation 5", "Attack Transition", 0, "Arms n Legs", "Attack Transition", 1, "Attack To Inter", "Legs", 0, "Animation 4", "Legs", 1, "Animation 2" ]
+node_connections = [ "output", 0, "Attack Transition", "Prepare", 0, "Arms", "Prepare", 1, "Animation 5", "Arms", 0, "Animation 3", "Arms", 1, "Animation", "Arms n Legs", 0, "Legs", "Arms n Legs", 1, "Prepare", "Attack To Inter", 0, "Animation 6", "Attack To Inter", 1, "Animation 7", "Attack Transition", 0, "Arms n Legs", "Attack Transition", 1, "Attack To Inter", "Legs", 0, "Animation 4", "Legs", 1, "Animation 2" ]
 
 [node name="Model" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0220814 )

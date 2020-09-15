@@ -9,7 +9,6 @@ func _ready():
 
 func enter():
 	player.stop_moving()
-	player.to_idle()
 	
 func exit():
 	pass

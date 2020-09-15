@@ -11,12 +11,12 @@ func enter():
 	pass
 	
 func exit():
-	pass
+	print("Leaving Moving")
 	
 func update(delta):
 	if controller.velocity.length() == 0:
 		return "Idle"
-	player.get_node("CostumeInterface").set_direction(controller.velocity)
+	player.rotate_towards(controller.velocity)
 	player.move_and_slide(-controller.velocity * controller.speed, Vector3.UP)
 	player.move()
 	

@@ -9,7 +9,7 @@ func enter():
 	print("Moving")
 	
 func exit():
-	pass
+	print("Leaving Moving")
 	
 func update(delta):
 	var leg_blend = animation_tree.get("parameters/Legs/blend_amount")
