@@ -7,9 +7,11 @@ var speed = 0
 func _input(event):
 	if event.is_action_pressed("pick_item"):
 		apply_item()
+	if event.is_action_pressed("attack"):
+		$Player.attack(velocity)
 
 func _physics_process(delta):
-	
+	velocity = Vector3.ZERO
 	if (Input.is_action_pressed("forward")
 		|| Input.is_action_pressed("backward")
 		|| Input.is_action_pressed("right")
@@ -23,9 +25,13 @@ func _physics_process(delta):
 		speed = 0
 	
 	#$Player/CostumeInterface.rotation.y = lerp_angle($Player/CostumeInterface.rotation.y, atan2(-velocity.x, -velocity.z), delta * angular_acceleration)
-	$Player/CostumeInterface.set_direction(velocity)
 	
-	$Player.move_and_slide(-velocity * speed, Vector3.UP)
+	if velocity.length() != 0:
+		$Player/CostumeInterface.set_direction(velocity)
+		$Player.move_and_slide(-velocity * speed, Vector3.UP)
+		$Player.move()
+	else:
+		$Player.stop_moving()
 	
 func convert_direction(dir: Vector3) -> Vector3:
 	return Vector3.ZERO

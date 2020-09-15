@@ -1,9 +1,15 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=32 format=2]
 
 [ext_resource path="res://Scenes/Costumes/costume.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Costumes/AttackStateMachineCostume.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Dummy/States/dummy_prepare.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Dummy/States/dummy_inter.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Dummy/States/dummy_idle.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Dummy/States/dummy_attack.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Dummy/States/dummy_reset.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Dummy/States/dummy_moving.gd" type="Script" id=8]
 
-[sub_resource type="GDScript" id=1]
+[sub_resource type="GDScript" id=25]
 script/source = "extends Node
 
 var current_state
@@ -23,7 +29,7 @@ func _input(event):
 	current_state.input_handler()
 
 func tick(delta):
-	var next_state = current_state.tick(delta)
+	var next_state = current_state.update(delta)
 	if next_state != null:
 		change_state(next_state)
 
@@ -44,7 +50,7 @@ func pop_queue():
 	return next_state
 "
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=2]
 resource_name = "Attack_0"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/RightArm:translation")
@@ -190,11 +196,23 @@ tracks/11/keys = {
 "update": 0,
 "values": [ Vector3( -24.973, 0, 0 ) ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hip/RightThigh:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "Idle"
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "Idle_Arms"
 loop = true
 tracks/0/type = "transform"
@@ -531,9 +549,32 @@ tracks/31/keys = {
 "update": 0,
 "values": [ Vector3( 1, 0.999999, 0.999997 ) ]
 }
+tracks/32/type = "value"
+tracks/32/path = NodePath("Body/LeftArm/LeftShoulderArm/LeftForearm/LeftHand:scale")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/33/type = "value"
+tracks/33/path = NodePath("Body/RightArm/RightShoulderArm/RightForearm/RightHand:scale")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=4]
-resource_name = "Idle_Legs"
+[sub_resource type="Animation" id=5]
 loop = true
 tracks/0/type = "transform"
 tracks/0/path = NodePath("Hip/RightThigh")
@@ -645,8 +686,152 @@ tracks/9/keys = {
 "update": 0,
 "values": [ Vector3( -0.253985, 0, 0 ), Vector3( -0.253985, 0, 0 ) ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hip/RightThigh:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hip/RightThigh/RightShin:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.999999, 0.999999 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Hip/LeftThigh:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.999923, 0.999923 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Hip/LeftThigh/LeftShin:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Body/LeftArm:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Body/LeftArm/LeftShoulderArm:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Body/LeftArm/LeftShoulderArm/LeftForearm:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Body/LeftArm/LeftShoulderArm/LeftForearm/LeftHand:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Body/RightArm:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Body/RightArm/RightShoulderArm:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Body/RightArm/RightShoulderArm/RightForearm:scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.999999, 0.999997 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Body/RightArm/RightShoulderArm/RightForearm/RightHand:scale")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 resource_name = "Intermediary"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body/RightArm:translation")
@@ -796,8 +981,7 @@ tracks/5/keys = {
 "values": [ Vector3( 0, 0, 0 ), Vector3( -56.8694, -103.052, 85.7435 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Walk_Arms"
+[sub_resource type="Animation" id=8]
 length = 1.4
 loop = true
 tracks/0/type = "value"
@@ -944,9 +1128,104 @@ tracks/11/keys = {
 "update": 0,
 "values": [ Vector3( -48.888, 0, 0 ), Vector3( -79.61, 0, 0 ), Vector3( -105.528, 0, 0 ), Vector3( -81.652, 0, 0 ), Vector3( -103.404, 0, 0 ), Vector3( -84.243, 0, 0 ), Vector3( -61.349, 0, 0 ) ]
 }
+tracks/12/type = "value"
+tracks/12/path = NodePath("Body/RightArm/RightShoulderArm/RightForearm/RightHand:scale")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Body/RightArm/RightShoulderArm/RightForearm:scale")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.999999, 0.999997 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Body/RightArm/RightShoulderArm:scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Body/RightArm:scale")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Body/LeftArm:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Body/LeftArm/LeftShoulderArm:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Body/LeftArm/LeftShoulderArm/LeftForearm:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Body/LeftArm/LeftShoulderArm/LeftForearm/LeftHand:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "Walk_legs"
+[sub_resource type="Animation" id=9]
 length = 1.6
 loop = true
 tracks/0/type = "transform"
@@ -1059,25 +1338,94 @@ tracks/9/keys = {
 "update": 0,
 "values": [ Vector3( 16.972, 0, 0 ), Vector3( 32.253, 0, 0 ), Vector3( 60.014, 0, 0 ), Vector3( 37.498, 0, 0 ), Vector3( 8.685, 0, 0 ), Vector3( 35.671, 0, 0 ), Vector3( 6.71002, 0, 0 ), Vector3( 6.71002, 0, 0 ) ]
 }
+tracks/10/type = "value"
+tracks/10/path = NodePath("Hip/RightThigh:scale")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 1, 1 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Hip/LeftThigh:scale")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 1, 0.999923, 0.999923 ) ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Walk_legs"
 
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Idle_Arms"
+
+[sub_resource type="AnimationNodeAnimation" id=15]
+animation = "Idle_Legs"
+
+[sub_resource type="AnimationNodeAnimation" id=19]
+animation = "Prepare_Attack"
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Attack_0"
+
+[sub_resource type="AnimationNodeAnimation" id=22]
+animation = "Intermediary"
+
 [sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Walk_Arms"
 
-[sub_resource type="AnimationNodeBlend2" id=12]
+[sub_resource type="AnimationNodeBlend2" id=18]
+
+[sub_resource type="AnimationNodeBlend2" id=16]
+
+[sub_resource type="AnimationNodeBlend2" id=23]
+
+[sub_resource type="AnimationNodeBlend2" id=24]
+
+[sub_resource type="AnimationNodeBlend2" id=17]
+
+[sub_resource type="AnimationNodeBlend2" id=20]
 
 [sub_resource type="AnimationNodeBlendTree" id=13]
-graph_offset = Vector2( 81.16, -124.12 )
+graph_offset = Vector2( -384.84, -176.31 )
 nodes/Animation/node = SubResource( 11 )
-nodes/Animation/position = Vector2( 152, 0 )
+nodes/Animation/position = Vector2( -420, 160 )
 "nodes/Animation 2/node" = SubResource( 10 )
-"nodes/Animation 2/position" = Vector2( 152, 133 )
-nodes/Blend2/node = SubResource( 12 )
-nodes/Blend2/position = Vector2( 361, 19 )
-nodes/output/position = Vector2( 646, 57 )
-node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
+"nodes/Animation 2/position" = Vector2( -140, -140 )
+"nodes/Animation 3/node" = SubResource( 14 )
+"nodes/Animation 3/position" = Vector2( -420, 20 )
+"nodes/Animation 4/node" = SubResource( 15 )
+"nodes/Animation 4/position" = Vector2( -140, -260 )
+"nodes/Animation 5/node" = SubResource( 19 )
+"nodes/Animation 5/position" = Vector2( -400, 320 )
+"nodes/Animation 6/node" = SubResource( 21 )
+"nodes/Animation 6/position" = Vector2( 260, 160 )
+"nodes/Animation 7/node" = SubResource( 22 )
+"nodes/Animation 7/position" = Vector2( 180, 400 )
+nodes/Arms/node = SubResource( 16 )
+nodes/Arms/position = Vector2( -160, 40 )
+"nodes/Arms n Legs/node" = SubResource( 18 )
+"nodes/Arms n Legs/position" = Vector2( 280, -100 )
+"nodes/Attack To Inter/node" = SubResource( 23 )
+"nodes/Attack To Inter/position" = Vector2( 440, 180 )
+"nodes/Attack Transition/node" = SubResource( 24 )
+"nodes/Attack Transition/position" = Vector2( 600, -80 )
+nodes/Legs/node = SubResource( 17 )
+nodes/Legs/position = Vector2( 60, -240 )
+nodes/Prepare/node = SubResource( 20 )
+nodes/Prepare/position = Vector2( 80, 60 )
+nodes/output/position = Vector2( 800, -60 )
+node_connections = [ "output", 0, "Attack Transition", "Prepare", 0, "Arms", "Prepare", 1, "Animation 5", "Attack Transition", 0, "Arms n Legs", "Attack Transition", 1, "Attack To Inter", "Arms n Legs", 0, "Legs", "Arms n Legs", 1, "Prepare", "Legs", 0, "Animation 4", "Legs", 1, "Animation 2", "Arms", 0, "Animation 3", "Arms", 1, "Animation", "Attack To Inter", 0, "Animation 6", "Attack To Inter", 1, "Animation 7" ]
 
 [node name="Model" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0220814 )
@@ -1094,13 +1442,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.132308, 0.113791, -0.0003461
 radius = 0.018859
 
 [node name="LeftShoulderArm" type="CSGBox" parent="Body/LeftArm"]
-transform = Transform( 1, 0, 0, 0, 0.979034, 0.203697, 0, -0.203697, 0.979034, 0.00268877, -0.0783924, 0.0183361 )
+transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 )
 width = 0.032341
 height = 0.110191
 depth = 0.0356195
 
 [node name="LeftForearm" type="CSGBox" parent="Body/LeftArm/LeftShoulderArm"]
-transform = Transform( 1, 0, 0, 0, -0.0775796, 0.996986, 0, -0.996986, -0.0775796, 0, -0.0400684, 0.0510945 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110062, 0 )
 width = 0.0277
 height = 0.119418
 depth = 0.0356195
@@ -1116,13 +1464,13 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.136658, 0.111828, 0 )
 radius = 0.018859
 
 [node name="RightShoulderArm" type="CSGBox" parent="Body/RightArm"]
-transform = Transform( 1, 0, 0, 0, 0.905279, -0.424818, 0, 0.424818, 0.905279, 0.00268877, -0.0616438, -0.0363529 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00268877, -0.0739379, 0 )
 width = 0.032341
 height = 0.110191
 depth = 0.0356195
 
 [node name="RightForearm" type="CSGBox" parent="Body/RightArm/RightShoulderArm"]
-transform = Transform( 1, 0, 0, 0, -0.157127, 0.987575, 0, -0.987577, -0.157127, 0, -0.071731, 0.0547529 )
+transform = Transform( 1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999997, 0, 0, 0 )
 width = 0.0277
 height = 0.119418
 depth = 0.0356195
@@ -1140,13 +1488,13 @@ height = 0.0845149
 depth = 0.0804732
 
 [node name="RightThigh" type="CSGBox" parent="Hip"]
-transform = Transform( 0, 0, 0, 0, 0, 0, 0, 0, 0, -0.0583357, -0.11024, -0.0100521 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0583357, -0.106079, 0 )
 width = 0.0506106
 height = 0.156487
 depth = 0.0524418
 
 [node name="RightShin" type="CSGBox" parent="Hip/RightThigh"]
-transform = Transform( 1, 0, 0, 0, 0.993149, -0.116844, 0, 0.116844, 0.993149, 0, -0.113987, -0.00355711 )
+transform = Transform( 1, 0, 0, 0, 0.999989, 0.00443285, 0, -0.00443285, 0.999989, 0, -0.127326, -0.000166304 )
 width = 0.0506106
 height = 0.107197
 depth = 0.044764
@@ -1158,13 +1506,13 @@ height = 0.0382045
 depth = 0.108139
 
 [node name="LeftThigh" type="CSGBox" parent="Hip"]
-transform = Transform( 1, 0, 0, 0, 0.917452, 0.397656, 0, -0.397656, 0.917452, 0.0559084, -0.0979279, 0.0260681 )
+transform = Transform( 1, 0, 0, 0, 0.999923, 0, 0, 0, 0.999923, 0.0559084, -0.106079, 0 )
 width = 0.0506106
 height = 0.156487
 depth = 0.0524418
 
 [node name="LeftShin" type="CSGBox" parent="Hip/LeftThigh"]
-transform = Transform( 1, 0, 0, 0, 0.761127, -0.648603, 0, 0.648603, 0.761127, -8.49962e-05, -0.104896, -0.0277777 )
+transform = Transform( 1, 0, 0, 0, 0.999987, -0.00512969, 0, 0.00512969, 0.999987, -8.49962e-05, -0.129091, 0.000552805 )
 width = 0.0506106
 height = 0.107197
 depth = 0.044764
@@ -1186,22 +1534,49 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80695, 0 )
 radius = 0.116403
 
 [node name="StateMachine" parent="." instance=ExtResource( 2 )]
-script = SubResource( 1 )
+script = SubResource( 25 )
+
+[node name="Idle" parent="StateMachine" index="0"]
+script = ExtResource( 5 )
+
+[node name="Prepare" parent="StateMachine" index="1"]
+script = ExtResource( 3 )
+
+[node name="Attack" parent="StateMachine" index="2"]
+script = ExtResource( 6 )
+
+[node name="Intermediary" parent="StateMachine" index="3"]
+script = ExtResource( 4 )
+
+[node name="Timer" type="Timer" parent="StateMachine/Intermediary" index="0"]
+one_shot = true
+
+[node name="Reset" parent="StateMachine" index="4"]
+script = ExtResource( 7 )
+
+[node name="Moving" type="Node" parent="StateMachine"]
+script = ExtResource( 8 )
+NAME = "Moving"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Attack_0 = SubResource( 8 )
+anims/Attack_0 = SubResource( 2 )
 anims/Idle = SubResource( 3 )
-anims/Idle_Arms = SubResource( 5 )
-anims/Idle_Legs = SubResource( 4 )
-anims/Intermediary = SubResource( 9 )
+anims/Idle_Arms = SubResource( 4 )
+anims/Idle_Legs = SubResource( 5 )
+anims/Intermediary = SubResource( 6 )
 anims/Prepare_Attack = SubResource( 7 )
-anims/Walk_Arms = SubResource( 6 )
-anims/Walk_legs = SubResource( 2 )
+anims/Walk_Arms = SubResource( 8 )
+anims/Walk_legs = SubResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource( 13 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/Blend2/blend_amount = 0.0
+parameters/Arms/blend_amount = 0.0
+"parameters/Arms n Legs/blend_amount" = 0.5
+"parameters/Attack To Inter/blend_amount" = 0.0
+"parameters/Attack Transition/blend_amount" = 0.0
+parameters/Legs/blend_amount = 0.0
+parameters/Prepare/blend_amount = 0.0
 
 [editable path="StateMachine"]

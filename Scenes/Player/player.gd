@@ -7,7 +7,7 @@ export (int) var max_health
 func _ready():
 	$Stats/CurrentStats.health = get_max_health()
 
-func attack(direction, delta, angular_acceleration):
+func attack(direction):
 	$CostumeInterface.attack_towards(direction)
 
 
@@ -48,3 +48,13 @@ func is_away_from_item():
 
 func clear_item():
 	$ItemListener.reset()
+	
+# Animation State
+func stop_moving():
+	if $CostumeInterface/Model.moving:
+		$CostumeInterface/Model/StateMachine.change_state("Idle")
+	
+func move():
+	if $CostumeInterface/Model.moving == false:
+		$CostumeInterface/Model/StateMachine.change_state("Moving")
+		

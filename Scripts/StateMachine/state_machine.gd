@@ -17,7 +17,7 @@ func _input(event):
 	current_state.input_handler()
 
 func tick(delta):
-	var next_state = current_state.tick(delta)
+	var next_state = current_state.update(delta)
 	if next_state != null:
 		change_state(next_state)
 
