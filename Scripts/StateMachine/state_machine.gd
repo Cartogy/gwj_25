@@ -14,7 +14,7 @@ func _ready():
 	initialize(START_STATE)
 	
 func _input(event):
-	current_state.input_handler()
+	current_state.input_handler(event)
 
 func tick(delta):
 	var next_state = current_state.update(delta)

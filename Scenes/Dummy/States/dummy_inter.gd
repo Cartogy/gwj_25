@@ -20,7 +20,7 @@ func update(delta):
 	
 	
 	
-func input_handler():
+func input_handler(event):
 	pass
 	
 

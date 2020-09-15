@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/PlayerController/controller.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/StateMachine/state_machine.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/PlayerController/States/pc_attack_state.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/PlayerController/States/pc_move_state.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/PlayerController/States/pc_idle_state.gd" type="Script" id=6]
 
 [node name="Controller" type="Spatial"]
 script = ExtResource( 1 )
@@ -12,9 +16,17 @@ script = ExtResource( 1 )
 transform = Transform( -0.375448, 0.531616, -0.759226, 0, 0.819152, 0.573577, 0.926843, 0.215348, -0.307549, -1.69804, 1.86252, -0.457857 )
 
 [node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+START_STATE = NodePath("Idle")
 
 [node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+NAME = "Move"
 
 [node name="Attack" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )
+NAME = "Attack"
 
 [node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
+NAME = "Idle"

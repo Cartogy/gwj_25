@@ -14,7 +14,7 @@ func exit():
 func update(delta):
 	pass
 	
-func input_handler():
+func input_handler(event):
 	pass
 	
 

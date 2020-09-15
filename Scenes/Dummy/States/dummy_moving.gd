@@ -23,7 +23,7 @@ func update(delta):
 		animation_tree.set("parameters/Arms/blend_amount", new_arm_blend)
 	
 	
-func input_handler():
+func input_handler(event):
 	pass
 	
 

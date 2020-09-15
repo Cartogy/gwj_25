@@ -1,6 +1,9 @@
 extends Spatial
 
 var velocity = Vector3.FORWARD
+
+var attack_direction = Vector3.ZERO
+
 var angular_acceleration = 10
 var speed = 0
 
@@ -8,7 +11,10 @@ func _input(event):
 	if event.is_action_pressed("pick_item"):
 		apply_item()
 	if event.is_action_pressed("attack"):
-		$Player.attack(velocity)
+		if $StateMachine.current_state.NAME != "Attack":
+			attack_direction = acquire_attack_direction()
+			$StateMachine.change_state("Attack")
+		#$Player.attack(velocity)
 
 func _physics_process(delta):
 	velocity = Vector3.ZERO
@@ -24,17 +30,16 @@ func _physics_process(delta):
 	else:
 		speed = 0
 	
+	
 	#$Player/CostumeInterface.rotation.y = lerp_angle($Player/CostumeInterface.rotation.y, atan2(-velocity.x, -velocity.z), delta * angular_acceleration)
 	
-	if velocity.length() != 0:
-		$Player/CostumeInterface.set_direction(velocity)
-		$Player.move_and_slide(-velocity * speed, Vector3.UP)
-		$Player.move()
-	else:
-		$Player.stop_moving()
+	$StateMachine.tick(delta)
 	
 func convert_direction(dir: Vector3) -> Vector3:
 	return Vector3.ZERO
+	
+func acquire_attack_direction():
+	pass
 	
 # Temporary Hack
 func apply_item():

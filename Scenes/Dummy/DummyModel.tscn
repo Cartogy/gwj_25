@@ -9,7 +9,7 @@
 [ext_resource path="res://Scenes/Dummy/States/dummy_reset.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/Dummy/States/dummy_moving.gd" type="Script" id=8]
 
-[sub_resource type="GDScript" id=25]
+[sub_resource type="GDScript" id=1]
 script/source = "extends Node
 
 var current_state
@@ -26,7 +26,7 @@ func _ready():
 	initialize(START_STATE)
 	
 func _input(event):
-	current_state.input_handler()
+	current_state.input_handler(event)
 
 func tick(delta):
 	var next_state = current_state.update(delta)
@@ -1366,66 +1366,66 @@ tracks/11/keys = {
 [sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Walk_legs"
 
-[sub_resource type="AnimationNodeAnimation" id=14]
+[sub_resource type="AnimationNodeAnimation" id=11]
 animation = "Idle_Arms"
 
-[sub_resource type="AnimationNodeAnimation" id=15]
+[sub_resource type="AnimationNodeAnimation" id=12]
 animation = "Idle_Legs"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Prepare_Attack"
 
-[sub_resource type="AnimationNodeAnimation" id=21]
+[sub_resource type="AnimationNodeAnimation" id=14]
 animation = "Attack_0"
 
-[sub_resource type="AnimationNodeAnimation" id=22]
+[sub_resource type="AnimationNodeAnimation" id=15]
 animation = "Intermediary"
 
-[sub_resource type="AnimationNodeAnimation" id=11]
+[sub_resource type="AnimationNodeAnimation" id=16]
 animation = "Walk_Arms"
-
-[sub_resource type="AnimationNodeBlend2" id=18]
-
-[sub_resource type="AnimationNodeBlend2" id=16]
-
-[sub_resource type="AnimationNodeBlend2" id=23]
-
-[sub_resource type="AnimationNodeBlend2" id=24]
 
 [sub_resource type="AnimationNodeBlend2" id=17]
 
+[sub_resource type="AnimationNodeBlend2" id=18]
+
+[sub_resource type="AnimationNodeBlend2" id=19]
+
 [sub_resource type="AnimationNodeBlend2" id=20]
 
-[sub_resource type="AnimationNodeBlendTree" id=13]
+[sub_resource type="AnimationNodeBlend2" id=21]
+
+[sub_resource type="AnimationNodeBlend2" id=22]
+
+[sub_resource type="AnimationNodeBlendTree" id=23]
 graph_offset = Vector2( -384.84, -176.31 )
-nodes/Animation/node = SubResource( 11 )
+nodes/Animation/node = SubResource( 16 )
 nodes/Animation/position = Vector2( -420, 160 )
 "nodes/Animation 2/node" = SubResource( 10 )
 "nodes/Animation 2/position" = Vector2( -140, -140 )
-"nodes/Animation 3/node" = SubResource( 14 )
+"nodes/Animation 3/node" = SubResource( 11 )
 "nodes/Animation 3/position" = Vector2( -420, 20 )
-"nodes/Animation 4/node" = SubResource( 15 )
+"nodes/Animation 4/node" = SubResource( 12 )
 "nodes/Animation 4/position" = Vector2( -140, -260 )
-"nodes/Animation 5/node" = SubResource( 19 )
+"nodes/Animation 5/node" = SubResource( 13 )
 "nodes/Animation 5/position" = Vector2( -400, 320 )
-"nodes/Animation 6/node" = SubResource( 21 )
+"nodes/Animation 6/node" = SubResource( 14 )
 "nodes/Animation 6/position" = Vector2( 260, 160 )
-"nodes/Animation 7/node" = SubResource( 22 )
+"nodes/Animation 7/node" = SubResource( 15 )
 "nodes/Animation 7/position" = Vector2( 180, 400 )
-nodes/Arms/node = SubResource( 16 )
+nodes/Arms/node = SubResource( 18 )
 nodes/Arms/position = Vector2( -160, 40 )
-"nodes/Arms n Legs/node" = SubResource( 18 )
+"nodes/Arms n Legs/node" = SubResource( 17 )
 "nodes/Arms n Legs/position" = Vector2( 280, -100 )
-"nodes/Attack To Inter/node" = SubResource( 23 )
+"nodes/Attack To Inter/node" = SubResource( 19 )
 "nodes/Attack To Inter/position" = Vector2( 440, 180 )
-"nodes/Attack Transition/node" = SubResource( 24 )
+"nodes/Attack Transition/node" = SubResource( 20 )
 "nodes/Attack Transition/position" = Vector2( 600, -80 )
-nodes/Legs/node = SubResource( 17 )
+nodes/Legs/node = SubResource( 21 )
 nodes/Legs/position = Vector2( 60, -240 )
-nodes/Prepare/node = SubResource( 20 )
+nodes/Prepare/node = SubResource( 22 )
 nodes/Prepare/position = Vector2( 80, 60 )
 nodes/output/position = Vector2( 800, -60 )
-node_connections = [ "output", 0, "Attack Transition", "Prepare", 0, "Arms", "Prepare", 1, "Animation 5", "Attack Transition", 0, "Arms n Legs", "Attack Transition", 1, "Attack To Inter", "Arms n Legs", 0, "Legs", "Arms n Legs", 1, "Prepare", "Legs", 0, "Animation 4", "Legs", 1, "Animation 2", "Arms", 0, "Animation 3", "Arms", 1, "Animation", "Attack To Inter", 0, "Animation 6", "Attack To Inter", 1, "Animation 7" ]
+node_connections = [ "output", 0, "Attack Transition", "Arms", 0, "Animation 3", "Arms", 1, "Animation", "Attack To Inter", 0, "Animation 6", "Attack To Inter", 1, "Animation 7", "Arms n Legs", 0, "Legs", "Arms n Legs", 1, "Prepare", "Prepare", 0, "Arms", "Prepare", 1, "Animation 5", "Attack Transition", 0, "Arms n Legs", "Attack Transition", 1, "Attack To Inter", "Legs", 0, "Animation 4", "Legs", 1, "Animation 2" ]
 
 [node name="Model" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0220814 )
@@ -1494,7 +1494,7 @@ height = 0.156487
 depth = 0.0524418
 
 [node name="RightShin" type="CSGBox" parent="Hip/RightThigh"]
-transform = Transform( 1, 0, 0, 0, 0.999989, 0.00443285, 0, -0.00443285, 0.999989, 0, -0.127326, -0.000166304 )
+transform = Transform( 1, 0, 0, 0, 0.999989, 0.00443286, 0, -0.00443286, 0.999989, 0, -0.127326, -0.000166304 )
 width = 0.0506106
 height = 0.107197
 depth = 0.044764
@@ -1534,7 +1534,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.80695, 0 )
 radius = 0.116403
 
 [node name="StateMachine" parent="." instance=ExtResource( 2 )]
-script = SubResource( 25 )
+script = SubResource( 1 )
 
 [node name="Idle" parent="StateMachine" index="0"]
 script = ExtResource( 5 )
@@ -1569,7 +1569,7 @@ anims/Walk_Arms = SubResource( 8 )
 anims/Walk_legs = SubResource( 9 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 13 )
+tree_root = SubResource( 23 )
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Arms/blend_amount = 0.0
