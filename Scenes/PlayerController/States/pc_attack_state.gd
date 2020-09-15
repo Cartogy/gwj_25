@@ -8,16 +8,20 @@ func _ready():
 	player = controller.get_node("Player")
 
 func enter():
+	print("IN Attack")
+	$Timer.start()
 	controller.velocity = Vector3.ZERO
 	player.stop_moving()
 	attack()
 	
 	
 func exit():
-	pass
+	player.to_idle()
 	
 func update(delta):
-	pass
+	if $Timer.is_stopped():
+		player.to_idle()
+		return "Idle"
 	
 func input_handler(event):
 	if event.is_action_pressed("attack"):
@@ -25,5 +29,7 @@ func input_handler(event):
 		attack()
 	
 func attack():
+	$Timer.start()	# reset
 	player.attack(controller.attack_direction)
 	player.get_node("CostumeInterface").set_direction(controller.attack_direction)
+	

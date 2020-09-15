@@ -56,5 +56,8 @@ func stop_moving():
 	
 func move():
 	if $CostumeInterface/Model.moving == false:
-		$CostumeInterface/Model/StateMachine.change_state("Moving")
+		$CostumeInterface/Model.moving = true
 		
+# From attack
+func to_idle():
+	$CostumeInterface/Model/StateMachine.change_state("Idle")

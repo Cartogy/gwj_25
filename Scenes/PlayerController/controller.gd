@@ -11,9 +11,12 @@ func _input(event):
 	if event.is_action_pressed("pick_item"):
 		apply_item()
 	if event.is_action_pressed("attack"):
+
+		
 		if $StateMachine.current_state.NAME != "Attack":
-			attack_direction = acquire_attack_direction()
-			$StateMachine.change_state("Attack")
+			if obstacle_hit():
+				attack_direction = acquire_attack_direction()
+				$StateMachine.change_state("Attack")
 		#$Player.attack(velocity)
 
 func _physics_process(delta):
@@ -22,6 +25,8 @@ func _physics_process(delta):
 		|| Input.is_action_pressed("backward")
 		|| Input.is_action_pressed("right")
 		|| Input.is_action_pressed("left")):
+			if $StateMachine.current_state.NAME == "Attack":
+				$StateMachine.change_state("Idle")
 			speed = 2
 			velocity = Vector3(Input.get_action_strength("right") - Input.get_action_strength("left"),
 			0,
@@ -39,7 +44,7 @@ func convert_direction(dir: Vector3) -> Vector3:
 	return Vector3.ZERO
 	
 func acquire_attack_direction():
-	pass
+	return velocity
 	
 # Temporary Hack
 func apply_item():
@@ -68,6 +73,20 @@ func convert_coordinates(cam_angle, dir: Vector3):
 	var velocity = Vector3(x, 0, z)
 	return velocity.normalized()
 
+func click_position(camera, mouse_pos):
+	var ray_origin = camera.project_ray_origin(get_viewport().get_mouse_position())
+	var ray_direction = camera.project_ray_normal(mouse_pos)
+	
+	# Cast a ray
+	var from = ray_origin
+	var to = ray_origin + ray_direction * 5000.0
+	var space_state = get_world().get_direct_space_state()
+	var hit = space_state.intersect_ray(from, to)
+	if hit.size() != 0:
+		return hit.position
+	else:
+		return null
+
 # Maintain a value of either 0, -1, 1
 func to_unit(x):
 	if x == 0:
@@ -76,3 +95,6 @@ func to_unit(x):
 		return -1
 	else:
 		return 1
+
+func obstacle_hit():
+	return true
