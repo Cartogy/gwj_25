@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Shaders/glow_effect_targ_ent.shader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/emission = null
+shader_param/emission_energy = null
+shader_param/albedo = Color( 0.490196, 0.521569, 0.12549, 1 )
+shader_param/fresnel_power = 3.0
+shader_param/fresnel_color_intensity = 1.0
+shader_param/fresnel_color = Color( 0.870588, 0.141176, 0.141176, 1 )
+shader_param/fresnel_pulse_speed = 1.0
+shader_param/emission_pulse_speed = 1.0

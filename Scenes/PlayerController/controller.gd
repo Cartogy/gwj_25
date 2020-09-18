@@ -14,8 +14,8 @@ func _input(event):
 
 		
 		if $StateMachine.current_state.NAME != "Attack":
-			if $EntityAcquisition.entity_hovered != null:
-				attack_direction = acquire_attack_direction($EntityAcquisition.entity_hovered)
+			if $EntityAcquisition.get_current_entity() != null:
+				acquire_attack_direction($EntityAcquisition.get_current_entity())
 				$StateMachine.change_state("Attack")
 		#$Player.attack(velocity)
 
@@ -47,7 +47,8 @@ func convert_direction(dir: Vector3) -> Vector3:
 	
 func acquire_attack_direction(target :  TargetableEntity):
 	var dir = target.translation - $Player.translation
-	return -dir
+	attack_direction = -dir
+
 	
 # Temporary Hack
 func apply_item():

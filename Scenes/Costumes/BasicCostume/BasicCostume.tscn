@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Textures/Costumes/Basic_Costume_Layout_Color.png" type="Texture" id=1]
 [ext_resource path="res://Material.material" type="Material" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Scenes/Costumes/BaseStates/movement_state.gd" type="Script" id=10]
 [ext_resource path="res://Shaders/glow_effect.shader" type="Shader" id=11]
 [ext_resource path="res://Textures/Costumes/Basic_Costume_Layout_Emission.png" type="Texture" id=12]
+[ext_resource path="res://Scenes/Damagers/damager.gd" type="Script" id=13]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Body"
@@ -2157,7 +2158,7 @@ nodes/Preparing/position = Vector2( 100, 120 )
 nodes/Walking/node = SubResource( 22 )
 nodes/Walking/position = Vector2( -280, 120 )
 nodes/output/position = Vector2( 760, 140 )
-node_connections = [ "output", 0, "Attacking", "Attacking", 0, "Preparing", "Attacking", 1, "Attack_Stance", "Movement", 0, "Idle", "Movement", 1, "Walking", "Attack_Stance", 0, "Attack_0", "Attack_Stance", 1, "Intermediary", "Attack_Stance", 2, "Attack_1", "Preparing", 0, "Movement", "Preparing", 1, "Prepare" ]
+node_connections = [ "output", 0, "Attacking", "Movement", 0, "Idle", "Movement", 1, "Walking", "Attacking", 0, "Preparing", "Attacking", 1, "Attack_Stance", "Attack_Stance", 0, "Attack_0", "Attack_Stance", 1, "Intermediary", "Attack_Stance", 2, "Attack_1", "Preparing", 0, "Movement", "Preparing", 1, "Prepare" ]
 
 [sub_resource type="GDScript" id=24]
 script/source = "extends Node
@@ -2407,6 +2408,7 @@ script = ExtResource( 10 )
 NAME = "Movement"
 
 [node name="EffectArea" type="Spatial" parent="."]
+script = ExtResource( 13 )
 
 [node name="RightPunch" type="Area" parent="EffectArea"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.638491, 1.36757, 0.0709628 )

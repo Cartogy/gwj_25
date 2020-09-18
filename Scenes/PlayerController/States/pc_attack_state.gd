@@ -24,8 +24,10 @@ func update(delta):
 	
 func input_handler(event):
 	if event.is_action_pressed("attack"):
-		controller.acquire_attack_direction(controller.get_node("EntityAcquisition").entity_hovered)
-		attack()
+		var entity = controller.get_node("EntityAcquisition").get_current_entity()
+		if entity != null:
+			controller.acquire_attack_direction(entity)
+			attack()
 	
 func attack():
 	$Timer.start()	# reset
