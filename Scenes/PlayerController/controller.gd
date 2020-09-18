@@ -14,12 +14,14 @@ func _input(event):
 
 		
 		if $StateMachine.current_state.NAME != "Attack":
-			if obstacle_hit():
-				attack_direction = acquire_attack_direction()
+			if $EntityAcquisition.entity_hovered != null:
+				attack_direction = acquire_attack_direction($EntityAcquisition.entity_hovered)
 				$StateMachine.change_state("Attack")
 		#$Player.attack(velocity)
 
 func _physics_process(delta):
+	
+	
 	velocity = Vector3.ZERO
 	if (Input.is_action_pressed("forward")
 		|| Input.is_action_pressed("backward")
@@ -43,8 +45,9 @@ func _physics_process(delta):
 func convert_direction(dir: Vector3) -> Vector3:
 	return Vector3.ZERO
 	
-func acquire_attack_direction():
-	return velocity
+func acquire_attack_direction(target :  TargetableEntity):
+	var dir = target.translation - $Player.translation
+	return -dir
 	
 # Temporary Hack
 func apply_item():
@@ -96,5 +99,3 @@ func to_unit(x):
 	else:
 		return 1
 
-func obstacle_hit():
-	return true

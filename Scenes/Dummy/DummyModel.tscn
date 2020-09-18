@@ -1,11 +1,10 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://Scenes/Costumes/costume.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Costumes/AttackStateMachineCostume.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Dummy/States/dummy_prepare.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Dummy/States/dummy_inter.gd" type="Script" id=4]
 [ext_resource path="res://Scenes/Dummy/States/dummy_idle.gd" type="Script" id=5]
-[ext_resource path="res://Scenes/Dummy/States/dummy_attack.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Costumes/BaseStates/attack_state.gd" type="Script" id=6]
 [ext_resource path="res://Scenes/Dummy/States/dummy_reset.gd" type="Script" id=7]
 [ext_resource path="res://Scenes/Dummy/States/dummy_moving.gd" type="Script" id=8]
 
@@ -1425,7 +1424,7 @@ nodes/Legs/position = Vector2( 60, -240 )
 nodes/Prepare/node = SubResource( 22 )
 nodes/Prepare/position = Vector2( 80, 60 )
 nodes/output/position = Vector2( 800, -60 )
-node_connections = [ "output", 0, "Attack Transition", "Prepare", 0, "Arms", "Prepare", 1, "Animation 5", "Arms", 0, "Animation 3", "Arms", 1, "Animation", "Arms n Legs", 0, "Legs", "Arms n Legs", 1, "Prepare", "Attack To Inter", 0, "Animation 6", "Attack To Inter", 1, "Animation 7", "Attack Transition", 0, "Arms n Legs", "Attack Transition", 1, "Attack To Inter", "Legs", 0, "Animation 4", "Legs", 1, "Animation 2" ]
+node_connections = [ "output", 0, "Attack Transition", "Prepare", 0, "Arms", "Prepare", 1, "Animation 5", "Arms", 0, "Animation 3", "Arms", 1, "Animation", "Arms n Legs", 0, "Legs", "Arms n Legs", 1, "Prepare", "Legs", 0, "Animation 4", "Legs", 1, "Animation 2", "Attack To Inter", 0, "Animation 6", "Attack To Inter", 1, "Animation 7", "Attack Transition", 0, "Arms n Legs", "Attack Transition", 1, "Attack To Inter" ]
 
 [node name="Model" type="Spatial"]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.0220814 )
@@ -1535,6 +1534,7 @@ radius = 0.116403
 
 [node name="StateMachine" parent="." instance=ExtResource( 2 )]
 script = SubResource( 1 )
+START_STATE = NodePath("")
 
 [node name="Idle" parent="StateMachine" index="0"]
 script = ExtResource( 5 )
@@ -1542,16 +1542,10 @@ script = ExtResource( 5 )
 [node name="Prepare" parent="StateMachine" index="1"]
 script = ExtResource( 3 )
 
-[node name="Attack" parent="StateMachine" index="2"]
+[node name="Attacking" parent="StateMachine" index="2"]
 script = ExtResource( 6 )
 
-[node name="Intermediary" parent="StateMachine" index="3"]
-script = ExtResource( 4 )
-
-[node name="Timer" type="Timer" parent="StateMachine/Intermediary" index="0"]
-one_shot = true
-
-[node name="Reset" parent="StateMachine" index="4"]
+[node name="Reset" parent="StateMachine" index="3"]
 script = ExtResource( 7 )
 
 [node name="Moving" type="Node" parent="StateMachine"]

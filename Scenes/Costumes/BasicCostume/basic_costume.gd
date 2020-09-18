@@ -1,6 +1,7 @@
 extends Spatial
 
-class_name TargetableEntity
+
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -14,6 +15,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-func get_type():
-	return "TargetableEntity"

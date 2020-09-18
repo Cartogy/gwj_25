@@ -14,13 +14,13 @@ func prepare_attack():
 	$StateMachine.change_state("Prepare")
 	
 func attack():
-	if $StateMachine.current_state.NAME != "Prepare":
-		$StateMachine/Prepare.finish = true
-		$StateMachine.change_state("Prepare")
-	elif $StateMachine.current_state.NAME == "Intermediary":
-		$StateMachine.change_state("Attack")
+	if $StateMachine.current_state.NAME == "Attacking":
+		$StateMachine/Attacking.attack()
 	elif $StateMachine.current_state.NAME == "Prepare":
 		$StateMachine/Prepare.finish = true
+	elif $StateMachine.current_state.NAME != "Prepare":
+		$StateMachine/Prepare.finish = true
+		$StateMachine.change_state("Prepare")
 	
 func to_idle():
 	$StateMachine.change_state("Idle")
@@ -28,5 +28,14 @@ func to_idle():
 	
 func move():
 	if moving == false:
-		$StateMachine.change_state("Moving")
+		$StateMachine.change_state("Movement")
 
+func deactivate_effect_area():
+	$EffectArea.set_physics_process(false)
+	$EffectArea.set_process(false)
+	$EffectArea.set_process_input(false)
+	
+func activate_effect_area():
+	$EffectArea.set_physics_process(true)
+	$EffectArea.set_process(true)
+	$EffectArea.set_process_input(true)

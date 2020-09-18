@@ -1,11 +1,12 @@
 extends "../../../../Scripts/StateMachine/state.gd"
 
+var costume : Costume
 
 func _ready():
-	pass # Replace with function body.
+	costume = get_parent().get_parent()
 
 func enter():
-	pass
+	costume.deactivate_effect_area()
 	
 func exit():
 	pass

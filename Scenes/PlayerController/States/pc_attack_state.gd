@@ -24,7 +24,7 @@ func update(delta):
 	
 func input_handler(event):
 	if event.is_action_pressed("attack"):
-		controller.acquire_attack_direction()
+		controller.acquire_attack_direction(controller.get_node("EntityAcquisition").entity_hovered)
 		attack()
 	
 func attack():

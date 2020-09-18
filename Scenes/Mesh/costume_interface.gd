@@ -13,10 +13,10 @@ func set_direction(val):
 	
 func move():
 	
-	$Model.move()
+	$Costume.move()
 	
 func to_idle():
-	$Model.to_idle()
+	$Costume.to_idle()
 	
 func attack(direction):
-	$Model.attack()
+	$Costume.attack()
