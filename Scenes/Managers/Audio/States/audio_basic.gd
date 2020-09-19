@@ -1,17 +1,17 @@
 extends "../../../../Scripts/StateMachine/state.gd"
 
-export (Array) var enemies
-
-
+export (String, FILE, "*.wav") var music_path
+var music
 
 func _ready():
-	pass # Replace with function body.
+	music = load(music_path)
 
 func enter():
-	spawn_enemies()
+	get_owner().play(music)
+	#other stuff
 	
 func exit():
-	remove_enemies()
+	get_owner().stop(music)
 	
 func update(delta):
 	pass
@@ -19,8 +19,3 @@ func update(delta):
 func input_handler(event):
 	pass
 	
-func spawn_enemies():
-	pass
-	
-func remove_enemies():
-	pass

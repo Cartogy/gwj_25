@@ -32,6 +32,10 @@ func apply_consumable_item():
 	
 func apply_costume():
 	var costume_data = ItemDB.get_costume_item($ItemListener.current_item_id)
+	
+	# LevelManager access
+	get_tree().root.get_node("LevelManager").change_state($ItemListener.current_item_id)
+	
 	$Stats/BonusStats.update_health(costume_data.health)
 	change_costume(costume_data.model)
 	

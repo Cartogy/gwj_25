@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Scenes/Damagers/damager.gd"
 }, {
+"base": "KinematicBody",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scenes/Enemies/enemy.gd"
+}, {
 "base": "",
 "class": "MeleeCostume",
 "language": "GDScript",
@@ -71,6 +76,7 @@ _global_script_class_icons={
 "CostumeItem": "",
 "CostumeResource": "",
 "Damager": "",
+"Enemy": "",
 "MeleeCostume": "",
 "Player": "",
 "ProjectileCostume": "",
@@ -87,6 +93,7 @@ config/icon="res://icon.png"
 [autoload]
 
 ItemDB="*res://Autoload/ItemDictionary.tscn"
+AudioManager="*res://Scenes/Managers/Audio/AudioManager.tscn"
 
 [input]
 
