@@ -2,11 +2,13 @@
 
 [ext_resource path="res://Scenes/Items/Item.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Items/Costumes/item_costume.gd" type="Script" id=2]
-[ext_resource path="res://Scenes/Items/Costumes/Samurai/ModelKatana.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Items/ItemModels/SamuraiItemModel.tscn" type="PackedScene" id=3]
 
 [node name="Item" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 item_id = "samurai"
 
-[node name="Katana" parent="." index="2" instance=ExtResource( 3 )]
-transform = Transform( 2.81564, 0, 1.03545, 0, 3, 0, -1.03545, 0, 2.81564, -0.0932691, -0.0419304, -0.207786 )
+[node name="CollisionShape" parent="Area" index="0"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.194731, 0, 0.234685 )
+
+[node name="ItemModel" parent="." index="2" instance=ExtResource( 3 )]

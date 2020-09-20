@@ -10,6 +10,7 @@ export (NodePath) var START_STATE
 
 func _ready():
 	for child in get_children():
+		print(child.name)
 		all_states[child.NAME] = child
 	initialize(START_STATE)
 	

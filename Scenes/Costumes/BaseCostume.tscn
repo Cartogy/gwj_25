@@ -1,0 +1,236 @@
+[gd_scene load_steps=40 format=2]
+
+[ext_resource path="res://Scenes/Damagers/damager.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Costumes/costume.gd" type="Script" id=3]
+[ext_resource path="res://Scenes/Costumes/AttackStateMachineCostume.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Costumes/BaseStates/idle_state.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Costumes/BaseStates/attack_state.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Costumes/BaseStates/prepare_state.gd" type="Script" id=8]
+[ext_resource path="res://Scenes/Costumes/BaseStates/attack_0.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/Costumes/BaseStates/movement_state.gd" type="Script" id=11]
+[ext_resource path="res://Scenes/Costumes/BaseStates/attack_1.gd" type="Script" id=13]
+
+[sub_resource type="AnimationNodeAnimation" id=32]
+animation = "Attack1"
+
+[sub_resource type="AnimationNodeBlend2" id=33]
+
+[sub_resource type="AnimationNodeAnimation" id=34]
+animation = "Idle"
+
+[sub_resource type="AnimationNodeAnimation" id=35]
+animation = "Intermediary"
+
+[sub_resource type="AnimationNodeBlend2" id=36]
+
+[sub_resource type="AnimationNodeOneShot" id=37]
+
+[sub_resource type="AnimationNodeAnimation" id=38]
+animation = "Prepare"
+
+[sub_resource type="AnimationNodeBlend2" id=39]
+
+[sub_resource type="AnimationNodeAnimation" id=40]
+animation = "Attack0"
+
+[sub_resource type="AnimationNodeAnimation" id=41]
+animation = "Attack1"
+
+[sub_resource type="AnimationNodeAnimation" id=13]
+animation = "Attack0"
+
+[sub_resource type="AnimationNodeAnimation" id=14]
+animation = "Intermediary"
+
+[sub_resource type="AnimationNodeBlend2" id=15]
+
+[sub_resource type="AnimationNodeBlendTree" id=16]
+graph_offset = Vector2( -181, -28 )
+nodes/Animation/node = SubResource( 14 )
+nodes/Animation/position = Vector2( -140, 80 )
+"nodes/Animation 2/node" = SubResource( 13 )
+"nodes/Animation 2/position" = Vector2( -160, 280 )
+nodes/Blend2/node = SubResource( 15 )
+nodes/Blend2/position = Vector2( 100, 40 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=17]
+animation = "Attack1"
+
+[sub_resource type="AnimationNodeAnimation" id=18]
+animation = "Intermediary"
+
+[sub_resource type="AnimationNodeBlend2" id=19]
+
+[sub_resource type="AnimationNodeBlendTree" id=20]
+nodes/Animation/node = SubResource( 18 )
+nodes/Animation/position = Vector2( 120, 80 )
+"nodes/Animation 2/node" = SubResource( 17 )
+"nodes/Animation 2/position" = Vector2( 100, 280 )
+nodes/Blend2/node = SubResource( 19 )
+nodes/Blend2/position = Vector2( 460, 40 )
+nodes/output/position = Vector2( 640, 140 )
+node_connections = [ "output", 0, "Blend2", "Blend2", 0, "Animation", "Blend2", 1, "Animation 2" ]
+
+[sub_resource type="AnimationNodeAnimation" id=21]
+animation = "Intermediary"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=22]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=27]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachine" id=28]
+states/Attack0/node = SubResource( 40 )
+states/Attack0/position = Vector2( 273, 372 )
+states/Attack1/node = SubResource( 41 )
+states/Attack1/position = Vector2( 273, 81 )
+states/BlendTree/node = SubResource( 20 )
+states/BlendTree/position = Vector2( 473, 81 )
+"states/BlendTree 2/node" = SubResource( 16 )
+"states/BlendTree 2/position" = Vector2( 492, 372 )
+states/Intermediary/node = SubResource( 21 )
+states/Intermediary/position = Vector2( 273, 209 )
+transitions = [ "Intermediary", "Attack1", SubResource( 22 ), "Attack1", "BlendTree", SubResource( 23 ), "BlendTree", "Intermediary", SubResource( 24 ), "Intermediary", "Attack0", SubResource( 25 ), "Attack0", "BlendTree 2", SubResource( 26 ), "BlendTree 2", "Intermediary", SubResource( 27 ) ]
+
+[sub_resource type="AnimationNodeAnimation" id=29]
+animation = "Walking"
+
+[sub_resource type="AnimationNodeBlendTree" id=30]
+graph_offset = Vector2( -252, 186 )
+nodes/Attack_1/node = SubResource( 32 )
+nodes/Attack_1/position = Vector2( -80, 560 )
+nodes/Attacking/node = SubResource( 33 )
+nodes/Attacking/position = Vector2( 500, 120 )
+nodes/Idle/node = SubResource( 34 )
+nodes/Idle/position = Vector2( -260, -20 )
+nodes/Intermediary/node = SubResource( 35 )
+nodes/Intermediary/position = Vector2( -100, 420 )
+nodes/Movement/node = SubResource( 36 )
+nodes/Movement/position = Vector2( -60, 0 )
+nodes/OneShot/node = SubResource( 37 )
+nodes/OneShot/position = Vector2( 60, 320 )
+nodes/Prepare/node = SubResource( 38 )
+nodes/Prepare/position = Vector2( -280, 300 )
+nodes/Preparing/node = SubResource( 39 )
+nodes/Preparing/position = Vector2( 100, 120 )
+nodes/StateMachine/node = SubResource( 28 )
+nodes/StateMachine/position = Vector2( 300, 220 )
+nodes/Walking/node = SubResource( 29 )
+nodes/Walking/position = Vector2( -280, 120 )
+nodes/output/position = Vector2( 760, 140 )
+node_connections = [ "output", 0, "Attacking", "Attacking", 0, "Preparing", "Attacking", 1, "StateMachine", "Movement", 0, "Idle", "Movement", 1, "Walking", "Preparing", 0, "Movement", "Preparing", 1, "Prepare", "OneShot", 0, "Intermediary", "OneShot", 1, "Attack_1" ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=42]
+
+[sub_resource type="GDScript" id=31]
+script/source = "extends Node
+
+var current_state
+var all_states = {}
+
+# states to transition to once a state ends
+var state_queues = []
+
+export (NodePath) var START_STATE
+
+func _ready():
+	for child in get_children():
+		all_states[child.NAME] = child
+	initialize(START_STATE)
+	
+func _input(event):
+	current_state.input_handler(event)
+
+func tick(delta):
+	var next_state = current_state.update(delta)
+	if next_state != null:
+		change_state(next_state)
+
+func initialize(start_state):
+	current_state = all_states[get_node(start_state).NAME]
+	current_state.enter()
+	
+func change_state(state):
+	current_state.exit()
+	current_state = all_states[state]
+	current_state.enter()
+
+func add_to_queue(state):
+	state_queues.append(state)
+	
+func pop_queue():
+	var next_state = state_queues.pop_front()
+	return next_state
+"
+
+[node name="Costume" type="Spatial"]
+script = ExtResource( 3 )
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource( 30 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/Attacking/blend_amount = 0.0
+parameters/Movement/blend_amount = 0.0
+parameters/OneShot/active = false
+parameters/Preparing/blend_amount = 0.0
+parameters/StateMachine/playback = SubResource( 42 )
+parameters/StateMachine/BlendTree/Blend2/blend_amount = 0
+"parameters/StateMachine/BlendTree 2/Blend2/blend_amount" = 0
+
+[node name="StateMachine" parent="." instance=ExtResource( 4 )]
+script = SubResource( 31 )
+
+[node name="Idle" parent="StateMachine" index="0"]
+script = ExtResource( 6 )
+
+[node name="Prepare" parent="StateMachine" index="1"]
+script = ExtResource( 8 )
+
+[node name="Attacking" parent="StateMachine" index="2"]
+script = ExtResource( 7 )
+NAME = "Attacking"
+
+[node name="StateMachine" parent="StateMachine/Attacking" index="0"]
+START_STATE = NodePath("../../../../Costume/StateMachine/Attacking/StateMachine/Attack0")
+
+[node name="Attack0" parent="StateMachine/Attacking/StateMachine" index="0"]
+script = ExtResource( 9 )
+NAME = "Attack0"
+
+[node name="Attack1" parent="StateMachine/Attacking/StateMachine" index="1"]
+script = ExtResource( 13 )
+NAME = "Attack1"
+
+[node name="Timer" parent="StateMachine/Attacking/StateMachine/Intermediary" index="0"]
+wait_time = 0.814
+one_shot = true
+
+[node name="Idle" parent="StateMachine/Attacking/StateMachine" index="3"]
+NAME = "Idle"
+
+[node name="Movement" parent="StateMachine" index="4"]
+script = ExtResource( 11 )
+NAME = "Movement"
+
+[node name="EffectArea" type="Spatial" parent="."]
+script = ExtResource( 1 )
+
+[editable path="StateMachine"]

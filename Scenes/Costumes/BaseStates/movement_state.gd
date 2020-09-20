@@ -14,6 +14,7 @@ func enter():
 	
 func exit():
 	costume.moving = false
+	print("Leaving Movemement")
 	anim_tree.set("parameters/Movement/blend_amount", 0.0)
 	
 func update(delta):

@@ -14,7 +14,7 @@ func change_music(state):
 	$StateMachine.change_state(state)
 
 func play(music):
-	$Music.stream(music)
+	$Music.stream = music
 	
 func stop(music):
 	$Music.stop()

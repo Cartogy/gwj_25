@@ -34,13 +34,17 @@ func apply_costume():
 	var costume_data = ItemDB.get_costume_item($ItemListener.current_item_id)
 	
 	# LevelManager access
-	get_tree().root.get_node("LevelManager").change_state($ItemListener.current_item_id)
+	var level_manager = get_tree().get_root().get_node("MainLevel").get_node("LevelManager")
+	print("LEVEL MANAGER:")
+	print(level_manager.name)
+	level_manager.change_state($ItemListener.current_item_id)
+	
 	
 	$Stats/BonusStats.update_health(costume_data.health)
 	change_costume(costume_data.model)
 	
 func change_costume(model):
-	$CostumeInterface.remove_child($CostumeInterface/Model)
+	$CostumeInterface.remove_child($CostumeInterface/Costume)
 	var new_model = load(model)
 	$CostumeInterface.add_child(new_model.instance())
 

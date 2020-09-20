@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Models/SamuraiHelmet/Samurai_helmet.glb" type="PackedScene" id=1]
+[ext_resource path="res://Models/Katana/Katana.glb" type="PackedScene" id=2]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Katana" parent="." instance=ExtResource( 2 )]
+transform = Transform( 0.0305937, 0.197646, 0, 0.0273226, -0.00422927, 0.19808, 0.195749, -0.0303, -0.027648, 0, 0.0273361, 0.80343 )
+
+[node name="Samurai_helmet" parent="." instance=ExtResource( 1 )]

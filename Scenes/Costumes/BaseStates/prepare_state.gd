@@ -11,18 +11,20 @@ func _ready():
 	anim_tree = costume.get_node("AnimationTree")
 
 func enter():
-	anim_tree.set("parameters/Preparing/blend_amount", 1)
+	print("In prepare")
 	
 func exit():
-	pass
+	print("Leaving Prepare")
+	anim_tree.set("parameters/Preparing/blend_amount", 0)
 	
 func update(delta):
 	var blend = anim_tree.get("parameters/Preparing/blend_amount")
-	var new_blend = lerp(blend, 1.0, 0.02)
+	var new_blend = lerp(blend, 1.0, 0.12)
 	
 	anim_tree.set("parameters/Preparing/blend_amount", new_blend)
 	
-	if new_blend >= 1.0 && finish:
+	if new_blend >= 0.95 && finish:
+		print("Going to Attack")
 		return "Attacking"
 	
 func input_handler(event):
