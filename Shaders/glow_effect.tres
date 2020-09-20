@@ -1,9 +1,6 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
 
-[ext_resource path="res://Shaders/glow_effect.shader" type="Shader" id=1]
-[ext_resource path="res://Textures/Costumes/Basic_Costume_Layout_Emission.png" type="Texture" id=2]
+[sub_resource type="Shader" id=1]
 
 [resource]
-shader = ExtResource( 1 )
-shader_param/glow_color = Color( 0.411765, 0.611765, 0.211765, 1 )
-shader_param/emission_texture = ExtResource( 2 )
+shader = SubResource( 1 )

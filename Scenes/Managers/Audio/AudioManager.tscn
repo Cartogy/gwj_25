@@ -16,11 +16,14 @@ START_STATE = NodePath("Basic")
 [node name="Samurai" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
 NAME = "samurai"
+music_path = "res://Audio/Music/Outsider_2-Grid_Xicoh_94.wav"
 
 [node name="MainMenu" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
 NAME = "MainMenu"
+music_path = "res://Audio/Music/CityLightsMasterV33.wav"
 
 [node name="Basic" type="Node" parent="StateMachine"]
 script = ExtResource( 3 )
 NAME = "basic"
+music_path = "res://Audio/Music/Outsider_1-Virtual Dunes_Xicoh_94.wav"

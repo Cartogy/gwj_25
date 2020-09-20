@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Outsider_3-Polygony_Xicoh_94.wav-cd495385bcbc7b0a271c1ec441bde81d.sample"
+
+[deps]
+
+source_file="res://Audio/Music/Outsider_3-Polygony_Xicoh_94.wav"
+dest_files=[ "res://.import/Outsider_3-Polygony_Xicoh_94.wav-cd495385bcbc7b0a271c1ec441bde81d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

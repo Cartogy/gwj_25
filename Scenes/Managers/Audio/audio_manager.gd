@@ -11,10 +11,13 @@ func _ready():
 	pass # Replace with function body.
 
 func change_music(state):
+	print("Change MUsic")
+	print(state)
 	$StateMachine.change_state(state)
 
 func play(music):
 	$Music.stream = music
+	$Music.play()
 	
 func stop(music):
 	$Music.stop()

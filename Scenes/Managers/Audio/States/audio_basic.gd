@@ -8,6 +8,7 @@ func _ready():
 
 func enter():
 	get_owner().play(music)
+	print(get_owner().name)
 	#other stuff
 	
 func exit():

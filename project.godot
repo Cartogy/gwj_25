@@ -87,7 +87,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Gwj_25"
-run/main_scene="res://Scenes/TestingScenes/Prototype_BasicCostume.tscn"
+run/main_scene="res://MainLevel.tscn"
 config/icon="res://icon.png"
 
 [autoload]

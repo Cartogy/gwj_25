@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=2]
+[gd_scene load_steps=59 format=2]
 
 [ext_resource path="res://Scenes/Costumes/SamuraiCostume/States/samurai_attack_1_state.gd" type="Script" id=1]
 [ext_resource path="res://Models/Samurai/Material.material" type="Material" id=2]
@@ -12,6 +12,9 @@
 [ext_resource path="res://Scenes/Costumes/BaseStates/prepare_state.gd" type="Script" id=10]
 [ext_resource path="res://Scenes/Costumes/SamuraiCostume/States/samurai_attack_state.gd" type="Script" id=11]
 [ext_resource path="res://Scenes/Costumes/SamuraiCostume/Katana.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Textures/Costumes/Samurai/Body_Samurai_UV_Layout_Colored.png" type="Texture" id=13]
+[ext_resource path="res://Shaders/glow_effect.shader" type="Shader" id=14]
+[ext_resource path="res://Textures/Costumes/Samurai/Body_Samurai_UV_Layout_Emission.png" type="Texture" id=15]
 
 [sub_resource type="ArrayMesh" id=1]
 resource_name = "Body"
@@ -115,6 +118,20 @@ bind/26/pose = Transform( -3.16164, 1.00263e-07, -0.0190964, -0.0120084, -2.4583
 bind/27/name = "toes_r_1"
 bind/27/bone = -1
 bind/27/pose = Transform( -3.16106, -9.99406e-07, -0.0633921, -0.0633824, 0.055349, 3.16058, 0.00110874, 3.16122, -0.055338, -0.829451, -0.450988, -0.112344 )
+
+[sub_resource type="ShaderMaterial" id=43]
+shader = ExtResource( 14 )
+shader_param/emission = Color( 0.172549, 0.980392, 0.0313726, 1 )
+shader_param/emission_energy = 4.0
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/glow_color = Color( 1, 1, 1, 1 )
+shader_param/fresnel_power = 3.0
+shader_param/fresnel_color_intensity = 1.0
+shader_param/fresnel_color = null
+shader_param/fresnel_pulse_speed = 1.0
+shader_param/emission_pulse_speed = 1.0
+shader_param/emission_texture = ExtResource( 15 )
+shader_param/base_texture = ExtResource( 13 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "Attack0"
@@ -2561,7 +2578,7 @@ bones/27/bound_children = [  ]
 [node name="Body" type="MeshInstance" parent="Armature/Skeleton"]
 mesh = SubResource( 1 )
 skin = SubResource( 2 )
-material/0 = null
+material/0 = SubResource( 43 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Armature")

@@ -1,18 +1,22 @@
 extends "../../../../Scripts/StateMachine/state.gd"
 
 var enemies_node : Node
-
+export (float) var energy
 
 
 func _ready():
 	pass # Replace with function body.
 
 func enter():
-	spawn_enemies()
+	var world: Environment = get_owner().get_node("WorldEnvironment").environment
+	print(world.set("background_energy", energy))
+	print("Done")
+	#spawn_enemies()
 	#other stuff
 	
 func exit():
-	remove_enemies()
+	pass
+	#remove_enemies()
 	
 func update(delta):
 	pass
