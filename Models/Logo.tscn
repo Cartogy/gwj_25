@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Textures/Logo/Logo.png" type="Texture" id=1]
+[ext_resource path="res://Textures/Logo/Logo_UV_Color.png" type="Texture" id=2]
+[ext_resource path="res://Shaders/glow_effect_targ_ent.shader" type="Shader" id=3]
+[ext_resource path="res://Models/Logo/Logo.glb" type="PackedScene" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 3 )
+shader_param/emission = Color( 0.772549, 0.501961, 0.282353, 1 )
+shader_param/emission_energy = 4.0
+shader_param/albedo = null
+shader_param/fresnel_power = 3.0
+shader_param/fresnel_color_intensity = 1.0
+shader_param/fresnel_color = Color( 0.572549, 0.152941, 0.584314, 1 )
+shader_param/fresnel_pulse_speed = 1.0
+shader_param/emission_pulse_speed = 2.0
+shader_param/emission_texture = ExtResource( 1 )
+shader_param/base_texture = ExtResource( 2 )
+
+[node name="Logo" instance=ExtResource( 4 )]
+
+[node name="Text" parent="." index="0"]
+material/0 = SubResource( 1 )

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Models/Buildings/BuildingMain/Building_Main_Mirrored.glb" type="PackedScene" id=1]
+[ext_resource path="res://Shaders/glow_effect_targ_ent.shader" type="Shader" id=2]
+[ext_resource path="res://Textures/Buildings/BuildingMain/Building_Main_UV_Layout_Emission.png" type="Texture" id=3]
+[ext_resource path="res://Textures/Buildings/BuildingMain/Building_Main_UV_Layout_Color.png" type="Texture" id=4]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/emission = Color( 0.901961, 0.866667, 0.321569, 1 )
+shader_param/emission_energy = 1.0
+shader_param/albedo = Color( 1, 1, 1, 1 )
+shader_param/fresnel_power = 3.0
+shader_param/fresnel_color_intensity = 1.0
+shader_param/fresnel_color = Color( 0.0196078, 0.0156863, 0.0156863, 1 )
+shader_param/fresnel_pulse_speed = 1.0
+shader_param/emission_pulse_speed = 1.0
+shader_param/emission_texture = ExtResource( 3 )
+shader_param/base_texture = ExtResource( 4 )
+
+[node name="Building_Main_Mirrored" instance=ExtResource( 1 )]
+
+[node name="Cube" parent="." index="0"]
+material/0 = SubResource( 1 )
